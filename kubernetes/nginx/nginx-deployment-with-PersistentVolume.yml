@@ -1,0 +1,43 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: nginx-deployment
+  namespace: nginx-ns
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-pod
+  template:
+    metadata:
+      name: nginx-dep-pod
+      labels:
+        app: nginx-pod
+    spec:
+      containers:
+        - name: nginx-cont
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
+          volumeMounts:
+            - mountPath: /usr/share/nginx/html
+              name: my-volume
+      tolerations:
+            - key: "prod"
+              operator: "Equal"
+              value: "true"
+              effect: "NoSchedule"
+      volumes:
+        - name: my-volume
+          persistentVolumeClaim:
+            claimName: local-pvc
+
+
+
