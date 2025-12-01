@@ -12,7 +12,7 @@ resource aws_default_vpc default{
 } 
 
 resource "aws_security_group" "my_security_group" {
-  name        = "auto-mate-tf-${var.env}"
+  name        = "auto-mate-${var.env}"
   description = "this is automate terrform sg group"
   vpc_id      = aws_default_vpc.default.id  #interpolation
 #   inbound rules(ingress)
@@ -49,7 +49,7 @@ resource "aws_security_group" "my_security_group" {
         cidr_blocks = [ "0.0.0.0/0" ]
     }
   tags = {
-    Name = "auto-mate-tf-${var.env}"
+    Name = "auto-mate-${var.env}"
     Environment = var.env
   }
 }
