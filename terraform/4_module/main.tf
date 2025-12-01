@@ -1,6 +1,4 @@
 
-
-# create key-pair
 resource aws_key_pair my_key {
   key_name   = "terra-${var.env}"
   public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKFn88JxNEAj6uheyQLN9Jj47ozqpY0ZtSvt2jclIDYM ubuntu@ip-172-31-15-176"
