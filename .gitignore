@@ -1,2 +1,5 @@
 kubernetes/autoscaler
-/*/node_modules
+**/node_modules
+**/.terraform
+**/*.pem
+**/*.pub
